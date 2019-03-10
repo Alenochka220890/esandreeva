@@ -1,10 +1,11 @@
-package ru.stqa.alena.addressbook;
+package ru.stqa.alena.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.alena.addressbook.model.ContactData;
 
 public class ContactCreationTests {
   private WebDriver wd;

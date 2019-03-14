@@ -8,17 +8,17 @@ public class GroupDeleteTests extends TestBase {
   @Test
   public void testGroupDelete() throws Exception {
     gotoGroupPage();
-    app.selectGroup();
-    app.deleteGroup();
+    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().deleteGroup();
     returnToGroupPage();
   }
 
   public void returnToGroupPage() {
-    app.returnToGroupPage();
+    app.getGroupHelper().returnToGroupPage();
   }
 
   public void gotoGroupPage() {
-    app.gotoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
   }
 
 

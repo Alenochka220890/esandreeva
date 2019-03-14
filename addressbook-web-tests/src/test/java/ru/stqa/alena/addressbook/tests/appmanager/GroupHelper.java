@@ -42,4 +42,11 @@ public class GroupHelper {
   public void initGroupCreation() {
     wd.findElement(By.name("new")).click();
   }
+
+  public void initGroupModification() {
+    wd.findElement(By.name("edit")).click();
+  }
+  public void submitGroupModification() {
+    wd.findElement(By.name("update")).click();
+  }
 }

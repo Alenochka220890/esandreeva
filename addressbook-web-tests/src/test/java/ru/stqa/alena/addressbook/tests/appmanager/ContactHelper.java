@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 
-public class ContactHelper {
+public class ContactHelper extends HelperBase{
   public WebDriver wd;
 
   public ContactHelper(WebDriver wd) {

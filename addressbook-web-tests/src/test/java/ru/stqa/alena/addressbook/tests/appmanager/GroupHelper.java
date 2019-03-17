@@ -1,52 +1,47 @@
 package ru.stqa.alena.addressbook.tests.appmanager;
 
+import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 
-public class GroupHelper {
-  public WebDriver wd;
+public class GroupHelper extends HelperBase {
 
   public GroupHelper(WebDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
   public void selectGroup() {
-    wd.findElement(By.name("selected[]")).click();
+    click(By.name("selected[]"));
   }
 
   public void deleteGroup() {
-    wd.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+    click(By.xpath("(//input[@name='delete'])[2]"));
   }
 
   public void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
+    click(By.linkText("group page"));
   }
 
   public void submitGroupCreation() {
-    wd.findElement(By.name("submit")).click();
+    click(By.name("submit"));
   }
 
   public void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+    type(By.name("group_name"), groupData.getName());
+    type(By.name("group_header"), groupData.getHeader());
+    type(By.name("group_footer"), groupData.getFooter());
   }
 
+
   public void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
+    click(By.name("new"));
   }
 
   public void initGroupModification() {
-    wd.findElement(By.name("edit")).click();
+    click(By.name("edit"));
   }
   public void submitGroupModification() {
-    wd.findElement(By.name("update")).click();
+    click(By.name("update"));
   }
 }

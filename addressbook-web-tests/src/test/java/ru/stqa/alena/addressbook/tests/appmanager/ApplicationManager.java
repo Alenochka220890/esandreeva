@@ -1,8 +1,8 @@
 package ru.stqa.alena.addressbook.tests.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -11,11 +11,11 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  private final SessionHelper sessionHelper = new SessionHelper();
-  private final String browser;
-  private NavigationHelper navigationHelper;
-  private ContactHelper contactHelper;
-  private GroupHelper groupHelper;
+  public final SessionHelper sessionHelper = new SessionHelper();
+  public final String browser;
+  public NavigationHelper navigationHelper;
+  public ContactHelper contactHelper;
+  public GroupHelper groupHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -41,15 +41,6 @@ public class ApplicationManager {
       sessionHelper.wd.findElement(by);
       return true;
     } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  public boolean isAlertPresent() {
-    try {
-      sessionHelper.wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
       return false;
     }
   }

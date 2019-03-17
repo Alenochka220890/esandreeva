@@ -7,7 +7,7 @@ import ru.stqa.alena.addressbook.tests.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {

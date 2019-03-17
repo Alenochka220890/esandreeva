@@ -12,29 +12,27 @@ public class ContactHelper extends HelperBase{
   }
 
   public void submitContactCreation() {
-    wd.findElement(By.xpath("//input[21]")).click();
+    click(By.xpath("//input[21]"));
+  }
+
+  public void click(By locator) {
+    wd.findElement(locator).click();
   }
 
   public void fillContactForm(ContactData contactData) {
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
-    wd.findElement(By.name("middlename")).click();
-    wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(contactData.getSurname());
-    wd.findElement(By.name("nickname")).click();
-    wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys(contactData.getNikname());
-    wd.findElement(By.name("mobile")).click();
-    wd.findElement(By.name("mobile")).click();
-    wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys(contactData.getPhone());
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+    type(By.name("firstname"), contactData.getName());
+    type(By.name("lastname"), contactData.getSurname());
+    type(By.name("nickname"), contactData.getNikname());
+    type(By.name("mobile"), contactData.getPhone());
+    type(By.name("email"), contactData.getEmail());
 
 
+  }
+
+  public void type(By locator, String text) {
+    click(locator);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 
   public void stop() {
@@ -42,18 +40,18 @@ public class ContactHelper extends HelperBase{
   }
 
   public void submitContact() {
-    wd.findElement(By.xpath("(//img[@alt='Edit'])[2]")).click();
+    click(By.xpath("(//img[@alt='Edit'])[2]"));
   }
 
   public void submitDeleteContactCreation() {
-    wd.findElement(By.xpath("(//input[@name='update'])[3]")).click();
+    click(By.xpath("(//input[@name='update'])[3]"));
   }
 
   public void homePagetContact() {
-    wd.findElement(By.linkText("home")).click();
+    click(By.linkText("home"));
   }
 
   public void selectContactModification() {
-    wd.findElement(By.xpath("(//input[@name='update'])[2]")).click();
+    click(By.xpath("(//input[@name='update'])[2]"));
   }
 }

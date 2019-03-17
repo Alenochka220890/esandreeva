@@ -42,11 +42,11 @@ public class ContactHelper {
   }
 
   public void submitContact() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='yurikk170187@yandex.ru'])[1]/following::img[2]")).click();
+    wd.findElement(By.xpath("(//img[@alt='Edit'])[2]")).click();
   }
 
   public void submitDeleteContactCreation() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[3]")).click();
+    wd.findElement(By.xpath("(//input[@name='update'])[3]")).click();
   }
 
   public void homePagetContact() {
@@ -54,6 +54,6 @@ public class ContactHelper {
   }
 
   public void selectContactModification() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    wd.findElement(By.xpath("(//input[@name='update'])[2]")).click();
   }
 }

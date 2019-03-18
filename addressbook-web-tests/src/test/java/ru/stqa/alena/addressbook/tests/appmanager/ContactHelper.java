@@ -56,4 +56,8 @@ public class ContactHelper extends HelperBase{
   public void selectContactModification() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
+
+  protected By selectedModGroup() {
+    return By.name("selected[]");
+  }
 }

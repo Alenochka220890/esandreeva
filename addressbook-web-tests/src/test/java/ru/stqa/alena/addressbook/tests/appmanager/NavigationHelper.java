@@ -15,4 +15,8 @@ public class NavigationHelper extends HelperBase{
   public void gotoContactPage() {
     wd.findElement(By.linkText("add new")).click();
   }
+
+  protected By selectedModGroup() {
+    return By.name("selected[]");
+  }
 }

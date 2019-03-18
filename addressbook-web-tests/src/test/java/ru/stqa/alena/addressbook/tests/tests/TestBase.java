@@ -1,9 +1,11 @@
 package ru.stqa.alena.addressbook.tests.tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.alena.addressbook.tests.appmanager.ApplicationManager;
+import ru.stqa.alena.addressbook.tests.appmanager.GroupHelper;
 
 public class TestBase {
 

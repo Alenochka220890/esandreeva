@@ -9,14 +9,10 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation() throws Exception {
     app.getNavigationHelper().gotoContactPage();
-    app.getContactHelper().fillContactForm(new ContactData("Yuriy", "Andreev", null, "+79999991122", null));
+    app.getContactHelper().fillContactForm(new ContactData("Yuriy", "Andreev", null, "+79999991122", null, "test1", true));
     app.getContactHelper().submitContactCreation();
 
 
-  }
-
-  public boolean isElementPresent(By by) {
-    return app.isElementPresent(by);
   }
 
 }

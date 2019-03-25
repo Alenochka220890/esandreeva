@@ -15,9 +15,7 @@ public class ContactCreationTests extends TestBase {
 
   }
 
-  public boolean isElementPresent(By by) {
-    return app.isElementPresent(by);
-  }
+
   public void gotoContactPage() {
     gotoContactPage();}
 }

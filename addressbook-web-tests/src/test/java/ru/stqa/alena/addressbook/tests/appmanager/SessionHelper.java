@@ -21,4 +21,8 @@ public class SessionHelper extends HelperBase {
     type(By.name("pass"),password);
     click(By.xpath("//input[@value='Login']"));
   }
+
+  protected By selectedModGroup() {
+    return By.name("selected[]");
+  }
 }

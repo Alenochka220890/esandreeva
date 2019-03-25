@@ -11,9 +11,6 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
-  public void selectGroup() {
-    click(By.name("selected[]"));
-  }
 
   public void deleteGroup() {
     click(By.xpath("(//input[@name='delete'])[2]"));
@@ -38,6 +35,10 @@ public class GroupHelper extends HelperBase {
     click(By.name("new"));
   }
 
+  public void selectGroup() {
+    click(By.name("selected[]"));
+  }
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
@@ -46,28 +47,24 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-<<<<<<< HEAD
   public void createGroup(GroupData group) {
     initGroupCreation();
-    fillGroupForm(new GroupData("test1", null, null));
+    fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
 
-  public boolean isThereAgroup() {
+  public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
-=======
-  }
 
->>>>>>> 606ecf9bc9e7ee035b60536ec676e92df3f61b96
-
-  private boolean isElementPresent(By locator) {
+  public boolean isElementPresent(By by) {
     try {
-      wd.findElement(locator);
+      wd.findElement(by);
       return true;
-    } catch (NoSuchElementException ex) {
+    } catch (NoSuchElementException e) {
       return false;
     }
   }
+
 }

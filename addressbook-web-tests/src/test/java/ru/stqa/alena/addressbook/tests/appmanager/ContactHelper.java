@@ -3,10 +3,13 @@ package ru.stqa.alena.addressbook.tests.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 
 public class ContactHelper extends HelperBase {
   public WebDriver wd;
+  public boolean creation;
 
   public ContactHelper(WebDriver wd) {
     this.wd = wd;
@@ -20,14 +23,18 @@ public class ContactHelper extends HelperBase {
     wd.findElement(locator).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getSurname());
     type(By.name("nickname"), contactData.getNikname());
     type(By.name("mobile"), contactData.getPhone());
     type(By.name("email"), contactData.getEmail());
 
-
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void type(By locator, String text) {
@@ -37,6 +44,7 @@ public class ContactHelper extends HelperBase {
       wd.findElement(locator).sendKeys(text);
     }
   }
+
 
   public void stop() {
     wd.quit();
@@ -58,22 +66,30 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-  public void createConact(ContactData contact) {
-    fillContactForm(new ContactData("Yuriy", "Andreev", null, "+79999991122", null));
+  protected By selectedModGroup() {
+    return By.name("selected[]");
+  }
+
+  public void fillContactForm(ContactData contactData) {
+  }
+
+  public void createAContact(ContactData contact) {
+    fillContactForm(contact);
     submitContactCreation();
   }
 
-  public boolean isThereAcontact() {
+  public boolean isThereAContact() {
     return isElementPresent(By.xpath("(//img[@alt='Edit'])"));
   }
 
-  private boolean isElementPresent(By locator) {
+  public boolean isElementPresent(By by) {
     try {
-      wd.findElement(locator);
+      wd.findElement(by);
       return true;
-    } catch (NoSuchElementException ex) {
+    } catch (NoSuchElementException e) {
       return false;
     }
-  }
 
+  }
 }
+

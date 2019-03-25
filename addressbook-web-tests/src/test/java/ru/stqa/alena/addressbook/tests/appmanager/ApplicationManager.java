@@ -36,14 +36,6 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(sessionHelper.wd);
   }
 
-  public boolean isElementPresent(By by) {
-    try {
-      sessionHelper.wd.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
 
   public GroupHelper getGroupHelper() {
 

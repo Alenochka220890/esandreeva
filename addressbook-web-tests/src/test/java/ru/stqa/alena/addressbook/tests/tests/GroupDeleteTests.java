@@ -2,16 +2,18 @@ package ru.stqa.alena.addressbook.tests.tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import ru.stqa.alena.addressbook.tests.model.GroupData;
 
 public class GroupDeleteTests extends TestBase {
 
   @Test
   public void testGroupDelete() throws Exception {
     gotoGroupPage();
+<<<<<<< HEAD
     if (! app.getGroupHelper().isThereAgroup()){
       app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
+=======
+>>>>>>> 606ecf9bc9e7ee035b60536ec676e92df3f61b96
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().deleteGroup();
     returnToGroupPage();

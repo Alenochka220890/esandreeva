@@ -46,6 +46,7 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
+<<<<<<< HEAD
   public void createGroup(GroupData group) {
     initGroupCreation();
     fillGroupForm(new GroupData("test1", null, null));
@@ -56,6 +57,10 @@ public class GroupHelper extends HelperBase {
   public boolean isThereAgroup() {
     return isElementPresent(By.name("selected[]"));
   }
+=======
+  }
+
+>>>>>>> 606ecf9bc9e7ee035b60536ec676e92df3f61b96
 
   private boolean isElementPresent(By locator) {
     try {

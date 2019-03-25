@@ -29,13 +29,21 @@ public class ApplicationManager {
     }else if (browser.equals(BrowserType.IE))
       sessionHelper.wd = new InternetExplorerDriver();
 
-    sessionHelper.wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    sessionHelper.wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     sessionHelper.login("admin", "secret");
     contactHelper = new ContactHelper(sessionHelper.wd);
     groupHelper = new GroupHelper(sessionHelper.wd);
     navigationHelper = new NavigationHelper(sessionHelper.wd);
   }
 
+  public boolean isElementPresent(By by) {
+    try {
+      sessionHelper.wd.findElement(by);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
 
   public GroupHelper getGroupHelper() {
 
@@ -53,4 +61,6 @@ public class ApplicationManager {
   public SessionHelper getSessionHelper() {
     return sessionHelper;
   }
-}
+
+  }
+

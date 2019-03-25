@@ -7,10 +7,15 @@ public class ContactDeleteTests extends TestBase{
   @Test
   public void testContactDelete() throws Exception {
     app.getContactHelper().homePagetContact();
-    if (app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createAContact(new ContactData("Yuriy", "Andreev", null, "+79999991122", null, "test1", true));
+    if (!app.getContactHelper().isThereAContact()) {
+      gotoContactPage();
+      app.getContactHelper().createContact(new ContactData("Yuriy", "Andreev", null, "+79999991122", null));
     }
     app.getContactHelper().submitContact();
     app.getContactHelper().submitDeleteContactCreation();
+  }
+
+  public void gotoContactPage() {
+   return;
   }
 }

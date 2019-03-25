@@ -16,13 +16,9 @@ public class SessionHelper extends HelperBase {
   }
 
   public void login(String username, String password) {
-    wd.get("http://localhost/addressbook/group.php");
+    wd.get("http://localhost/addressbook/");
     type(By.name("user"),username);
     type(By.name("pass"),password);
     click(By.xpath("//input[@value='Login']"));
-  }
-
-  protected By selectedModGroup() {
-    return By.name("selected[]");
   }
 }

@@ -1,6 +1,7 @@
 package ru.stqa.alena.addressbook.tests.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 
@@ -10,6 +11,9 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
+  public void selectGroup() {
+    click(By.name("selected[]"));
+  }
 
   public void deleteGroup() {
     click(By.xpath("(//input[@name='delete'])[2]"));
@@ -34,27 +38,31 @@ public class GroupHelper extends HelperBase {
     click(By.name("new"));
   }
 
-    public void selectGroup () {
-      click(By.name("selected[]"));
-    }
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
 
-    public void initGroupModification () {
-      click(By.name("edit"));
-    }
-    public void submitGroupModification () {
-      click(By.name("update"));
-    }
+  public void submitGroupModification() {
+    click(By.name("update"));
+  }
 
   public void createGroup(GroupData group) {
     initGroupCreation();
-    fillGroupForm(group);
+    fillGroupForm(new GroupData("test1", null, null));
     submitGroupCreation();
     returnToGroupPage();
   }
 
-  public boolean isThereAGroup() {
+  public boolean isThereAgroup() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  private boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
 }
-
-

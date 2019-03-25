@@ -3,13 +3,10 @@ package ru.stqa.alena.addressbook.tests.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 
 public class ContactHelper extends HelperBase {
   public WebDriver wd;
-  public boolean creation;
 
   public ContactHelper(WebDriver wd) {
     this.wd = wd;
@@ -23,35 +20,30 @@ public class ContactHelper extends HelperBase {
     wd.findElement(locator).click();
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation) {
+  public void fillContactForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getSurname());
     type(By.name("nickname"), contactData.getNikname());
     type(By.name("mobile"), contactData.getPhone());
     type(By.name("email"), contactData.getEmail());
 
-    if (creation) {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-      } else{
-        Assert.assertFalse(isElementPresent(By.name("new_group")));
-      }
-    }
 
-  public void type (By locator, String text){
-      click(locator);
-      if (text != null) {
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-      }
-    }
+  }
 
+  public void type(By locator, String text) {
+    click(locator);
+    if (text != null) {
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
+  }
 
   public void stop() {
     wd.quit();
   }
 
   public void submitContact() {
-    click(By.xpath("(//img[@alt='Edit'])[2]"));
+    click(By.xpath("(//img[@alt='Edit'])"));
   }
 
   public void submitDeleteContactCreation() {
@@ -66,13 +58,22 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-  protected By selectedModGroup() {
-    return By.name("selected[]");
+  public void createConact(ContactData contact) {
+    fillContactForm(new ContactData("Yuriy", "Andreev", null, "+79999991122", null));
+    submitContactCreation();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public boolean isThereAcontact() {
+    return isElementPresent(By.xpath("(//img[@alt='Edit'])"));
   }
+
+  private boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
+
 }
-
-
-

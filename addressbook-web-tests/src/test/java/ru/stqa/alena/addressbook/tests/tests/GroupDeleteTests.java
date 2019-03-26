@@ -8,23 +8,14 @@ public class GroupDeleteTests extends TestBase {
 
   @Test
   public void testGroupDelete() throws Exception {
-    gotoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
     if (! app.getGroupHelper().isThereAGroup()){
       app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().deleteGroup();
-    returnToGroupPage();
-  }
-
-  public void returnToGroupPage() {
     app.getGroupHelper().returnToGroupPage();
   }
-
-  public void gotoGroupPage() {
-    app.getNavigationHelper().gotoGroupPage();
-  }
-
-  }
+}
 
 

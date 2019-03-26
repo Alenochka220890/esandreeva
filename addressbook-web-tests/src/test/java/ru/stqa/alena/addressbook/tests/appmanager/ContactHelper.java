@@ -57,8 +57,10 @@ public class ContactHelper extends HelperBase {
   public void selectContactModification() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
+
   public void gotoContactPage() {
-    click(By.linkText("add new"));  }
+    click(By.linkText("add new"));
+  }
 
   public void createContact(ContactData contact) {
     gotoContactPage();
@@ -69,6 +71,7 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("(//img[@alt='Edit'])"));
   }
+
   public boolean isElementPresent(By locator) {
     try {
       wd.findElement(locator);

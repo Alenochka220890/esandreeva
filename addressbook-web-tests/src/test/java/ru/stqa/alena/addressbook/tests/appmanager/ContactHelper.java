@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 
 public class ContactHelper extends HelperBase {
-  public WebDriver wd;
 
   public ContactHelper(WebDriver wd) {
-    this.wd = wd;
+
+    super(wd);
   }
 
   public void submitContactCreation() {
@@ -72,12 +72,4 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.xpath("(//img[@alt='Edit'])"));
   }
 
-  public boolean isElementPresent(By locator) {
-    try {
-      wd.findElement(locator);
-      return true;
-    } catch (NoSuchElementException ex) {
-      return false;
-    }
   }
-}

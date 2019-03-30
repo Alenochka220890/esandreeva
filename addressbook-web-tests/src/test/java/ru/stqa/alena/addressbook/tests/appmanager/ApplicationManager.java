@@ -29,7 +29,7 @@ public class ApplicationManager {
     }else if (browser.equals(BrowserType.IE))
       sessionHelper.wd = new InternetExplorerDriver();
 
-    sessionHelper.wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    sessionHelper.wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     sessionHelper.login("admin", "secret");
     contactHelper = new ContactHelper(sessionHelper.wd);
     groupHelper = new GroupHelper(sessionHelper.wd);

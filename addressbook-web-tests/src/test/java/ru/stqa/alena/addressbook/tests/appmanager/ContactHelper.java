@@ -3,7 +3,12 @@ package ru.stqa.alena.addressbook.tests.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
+import ru.stqa.alena.addressbook.tests.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -77,5 +82,16 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.xpath("(//img[@alt='Edit'])")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr.entry"));
+    for (WebElement element : elements){
+      String name = element.getText();
+      ContactData contact = new ContactData("Yuriy", "Andreev", null, "+79999991122", null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }

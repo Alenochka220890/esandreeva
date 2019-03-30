@@ -1,5 +1,7 @@
 package ru.stqa.alena.addressbook.tests.model;
 
+import java.util.Objects;
+
 public class ContactData {
   private final String name;
   private final String surname;
@@ -33,5 +35,20 @@ public class ContactData {
 
   public String getEmail() {
     return email;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(name, that.name) &&
+            Objects.equals(surname, that.surname) &&
+            Objects.equals(phone, that.phone);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, surname, phone);
   }
 }

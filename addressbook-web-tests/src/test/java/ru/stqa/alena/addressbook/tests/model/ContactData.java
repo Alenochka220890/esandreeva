@@ -22,6 +22,7 @@ public class ContactData {
     this.phone = phone;
     this.email = email;
   }
+
   public ContactData(int id, String name, String surname, String nikname, String phone, String email) {
     this.id = id;
     this.name = name;
@@ -30,9 +31,11 @@ public class ContactData {
     this.phone = phone;
     this.email = email;
   }
+
   public int getId() {
     return id;
   }
+
   public String getName() {
     return name;
   }
@@ -70,12 +73,12 @@ public class ContactData {
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(name, that.name) &&
+            Objects.equals(surname, that.surname) &&
             Objects.equals(phone, that.phone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, phone);
+    return Objects.hash(id, name, surname, phone);
   }
-
 }

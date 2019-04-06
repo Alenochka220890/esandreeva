@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -30,9 +32,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNikname());
-    type(By.name("mobile"), contactData.getHomePhone());
+    type(By.name("home"), contactData.getHomePhone());
     type(By.name("email"), contactData.getEmail());
-
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
 
   }
 
@@ -118,6 +121,25 @@ public class ContactHelper extends HelperBase {
     }
       return new Contacts(contactCache);
   }
+
+  public Set<ContactData> allPhone(){
+    Set<ContactData> contacts =new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows){
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+    }
+      return contacts;
+
+
+  }
+
+
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");

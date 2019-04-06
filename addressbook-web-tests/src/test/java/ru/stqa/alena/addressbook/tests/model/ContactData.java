@@ -68,11 +68,6 @@ public class ContactData {
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(name, surname);
-  }
-
-  @Override
   public String toString() {
     return "ContactData{" +
             "id=" + id +
@@ -80,12 +75,19 @@ public class ContactData {
             ", surname='" + surname + '\'' +
             '}';
   }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(name, that.name) &&
+    return id == that.id &&
+            Objects.equals(name, that.name) &&
             Objects.equals(surname, that.surname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, surname);
   }
 }

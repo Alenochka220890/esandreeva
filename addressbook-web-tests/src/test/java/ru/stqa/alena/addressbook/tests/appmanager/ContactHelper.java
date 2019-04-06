@@ -16,8 +16,8 @@ public class ContactHelper extends HelperBase {
 
     super(wd);
   }
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  private void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void submitContactCreation() {
@@ -75,19 +75,23 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact);
     submitContactCreation();
   }
-  public void modify(int index, ContactData contact) {
-    selectContact(index);
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
     submitContact();
     fillContactForm(contact);
     selectContactModification();
     homePagetContact();
   }
-  public void delete(int index) {
-    selectContact(index);
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     submitContact();
     submitDeleteContactCreation();
     homePagetContact();
   }
+
+
+
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("(//img[@alt='Edit'])"));
   }
@@ -96,18 +100,6 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.xpath("(//img[@alt='Edit'])")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements)
-    {
-      String name = element.findElement(By.xpath(".//td[3]")).getText();
-      String surname = element.findElement(By.xpath(".//td[2]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withName(name).withSurname(surname));
-    }
-    return contacts;
-  }
   public Set<ContactData> all() {
     Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -120,4 +112,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+
 }

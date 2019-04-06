@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
+import ru.stqa.alena.addressbook.tests.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -75,12 +76,14 @@ public class ContactHelper extends HelperBase {
     gotoContactPage();
     fillContactForm(contact);
     submitContactCreation();
+    contactCache = null;
   }
   public void modify(ContactData contact) {
     selectContactById(contact.getId());
     submitContact();
     fillContactForm(contact);
     selectContactModification();
+    contactCache = null;
     homePagetContact();
   }
 
@@ -88,6 +91,7 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     submitContact();
     submitDeleteContactCreation();
+    contactCache = null;
     homePagetContact();
   }
 
@@ -101,17 +105,22 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.xpath("(//img[@alt='Edit'])")).size();
   }
 
-  public Contacts all() {
-    Contacts contacts = new Contacts();
+  private Contacts contactCache = null;
+
+    public Contacts all() {
+      if (contactCache != null) {
+        return new Contacts(contactCache);
+      }
+      contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements)
     {
       String name = element.findElement(By.xpath(".//td[3]")).getText();
       String surname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withName(name).withSurname(surname));
+      contactCache.add(new ContactData().withId(id).withName(name).withSurname(surname));
     }
-    return contacts;
+      return new Contacts(contactCache);
   }
 
 

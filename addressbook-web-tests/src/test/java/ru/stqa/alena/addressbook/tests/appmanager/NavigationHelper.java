@@ -9,10 +9,10 @@ public class NavigationHelper extends HelperBase{
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
    click(By.linkText("groups"));  }
 
-  public void gotoContactPage() {
+  public void contactPage() {
     click(By.linkText("add new"));
   }
   }

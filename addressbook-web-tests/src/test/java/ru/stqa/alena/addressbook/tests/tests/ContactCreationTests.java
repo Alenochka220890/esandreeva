@@ -1,27 +1,24 @@
 package ru.stqa.alena.addressbook.tests.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
-import ru.stqa.alena.addressbook.tests.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    app.getContactHelper().homePagetContact();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().gotoContactPage();
+    app.contact().homePagetContact();
+    List<ContactData> before = app.contact().list();
+    app.goTo().contactPage();
     ContactData contact = new ContactData("Yuriy", "Andreev", null, null, null);
-    app.getContactHelper().fillContactForm(contact);
-    app.getContactHelper().submitContactCreation();
-    app.getContactHelper().homePagetContact();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().fillContactForm(contact);
+    app.contact().submitContactCreation();
+    app.contact().homePagetContact();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 

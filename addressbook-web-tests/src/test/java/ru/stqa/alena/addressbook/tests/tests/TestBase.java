@@ -16,6 +16,6 @@ public class TestBase {
 
   @AfterSuite(alwaysRun = true)
   public void tearDown() throws Exception {
-    app.getContactHelper().stop();
+    app.contact().stop();
   }
 }

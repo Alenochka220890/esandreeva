@@ -4,33 +4,54 @@ import java.util.Objects;
 
 public class ContactData {
 
-  private int id = Integer.MAX_VALUE;;
-  private String name;
-  private String surname;
+  private int id = Integer.MAX_VALUE;
+  ;
+  private String firstname;
+  private String lastname;
   private String nikname;
-  private String phone;
+  private String homePhone;
   private String email;
+  private String mobilePhone;
+  private String workPhone;
 
+  public void setHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+  }
 
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public void setMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+  }
+
+  public void setWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+  }
 
   public int getId() {
     return id;
   }
 
-  public String getName() {
-    return name;
+  public String getFirstname() {
+    return firstname;
   }
 
-  public String getSurname() {
-    return surname;
+  public String getLastname() {
+    return lastname;
   }
 
   public String getNikname() {
     return nikname;
-  }
-
-  public String getPhone() {
-    return phone;
   }
 
   public String getEmail() {
@@ -42,13 +63,13 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withName(String name) {
-    this.name = name;
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
     return this;
   }
 
-  public ContactData withSurname(String surname) {
-    this.surname = surname;
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
     return this;
   }
 
@@ -57,37 +78,49 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withPhone(String phone) {
-    this.phone = phone;
-    return this;
-  }
-
   public ContactData withEmail(String email) {
     this.email = email;
     return this;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", surname='" + surname + '\'' +
-            '}';
+  public ContactData withHomePhone(String home) {
+    this.homePhone = home;
+    return this;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(surname, that.surname);
+  public ContactData withMobilePhone(String mobile) {
+    this.mobilePhone = mobile;
+    return this;
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, surname);
+  public ContactData withWorkPhone(String work) {
+    this.workPhone = work;
+    return this;
   }
-}
+
+    @Override
+    public String toString () {
+      return "ContactData{" +
+              "id=" + id +
+              ", firstname='" + firstname + '\'' +
+              ", lastname='" + lastname + '\'' +
+              '}';
+    }
+
+    @Override
+    public boolean equals (Object o){
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ContactData that = (ContactData) o;
+      return id == that.id &&
+              Objects.equals(firstname, that.firstname) &&
+              Objects.equals(lastname, that.lastname);
+    }
+
+    @Override
+    public int hashCode () {
+      return Objects.hash(id, firstname, lastname);
+    }
+
+  }
+

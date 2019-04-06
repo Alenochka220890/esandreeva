@@ -1,13 +1,9 @@
 package ru.stqa.alena.addressbook.tests.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
-
-import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,7 +13,7 @@ public class ContactDeleteTests extends TestBase {
   public void ensurePreconditions() {
     app.contact().homePagetContact();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withName("Yuriy").withSurname("Andreev"));
+      app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev"));
     }
   }
   @Test

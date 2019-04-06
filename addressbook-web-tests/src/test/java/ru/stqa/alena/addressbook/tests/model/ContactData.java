@@ -3,41 +3,15 @@ package ru.stqa.alena.addressbook.tests.model;
 import java.util.Objects;
 
 public class ContactData {
-  public void setId(int id) {
-    this.id = id;
-  }
 
-  private int id;
-  private final String name;
-  private final String surname;
-  private final String nikname;
-  private final String phone;
-  private final String email;
+  private int id = Integer.MAX_VALUE;;
+  private String name;
+  private String surname;
+  private String nikname;
+  private String phone;
+  private String email;
 
 
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, surname);
-  }
-
-  public ContactData(String name, String surname, String nikname, String phone, String email) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.surname = surname;
-    this.nikname = nikname;
-    this.phone = phone;
-    this.email = email;
-  }
-
-  public ContactData(int id, String name, String surname, String nikname, String phone, String email) {
-    this.id = id;
-    this.name = name;
-    this.surname = surname;
-    this.nikname = nikname;
-    this.phone = phone;
-    this.email = email;
-  }
 
   public int getId() {
     return id;
@@ -61,6 +35,41 @@ public class ContactData {
 
   public String getEmail() {
     return email;
+  }
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public ContactData withSurname(String surname) {
+    this.surname = surname;
+    return this;
+  }
+
+  public ContactData withNikname(String nikname) {
+    this.nikname = nikname;
+    return this;
+  }
+
+  public ContactData withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, surname);
   }
 
   @Override

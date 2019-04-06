@@ -62,7 +62,6 @@ public class ContactData {
             "id=" + id +
             ", name='" + name + '\'' +
             ", surname='" + surname + '\'' +
-            ", phone='" + phone + '\'' +
             '}';
   }
 
@@ -73,12 +72,11 @@ public class ContactData {
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(name, that.name) &&
-            Objects.equals(surname, that.surname) &&
-            Objects.equals(phone, that.phone);
+            Objects.equals(surname, that.surname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, surname, phone);
+    return Objects.hash(id, name, surname);
   }
 }

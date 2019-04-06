@@ -12,13 +12,13 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification() throws Exception {
     app.getContactHelper().homePagetContact();
-    List<ContactData> before = app.getContactHelper().getContactList();
     if (!app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Yuriy", "Andreev", null, "+79999991122", null));
+      app.getContactHelper().createContact(new ContactData("Yuriy", "Andreev", null, null, null));
     }
+    List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().submitContact();
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(),"Yuriy", "Andreev", null, "+79999991122", null);
+    ContactData contact = new ContactData(before.get(before.size() - 1).getId(),"Yuriy", "Andreev", null, null, null);
     app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().selectContactModification();
     app.getContactHelper().homePagetContact();

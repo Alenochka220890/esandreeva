@@ -1,15 +1,18 @@
 package ru.stqa.alena.addressbook.tests.tests;
 
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 
-import java.io.File;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,18 +20,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
   @DataProvider
-  public Iterator<Object[]> validContacts() {
+  public Iterator<Object[]> validContacts() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    list.add(new Object[]{new ContactData().withFirstname("firstname 1").withLastname("lastname 1").withNikname("nickname 1")
-            .withHomePhone("home 1").withMobilePhone("mobile 1").withWorkPhone("work 1").withEmail("email 1")
-            .withEmail2("email2 1").withEmail3("email3 1")});
-    list.add(new Object[]{new ContactData().withFirstname("firstname 2").withLastname("lastname 2").withNikname("nickname 2")
-            .withHomePhone("home 2").withMobilePhone("mobile 2").withWorkPhone("work 2").withEmail("email 2")
-            .withEmail2("email2 2").withEmail3("email3 2")});
-    list.add(new Object[]{new ContactData().withFirstname("firstname 3").withLastname("lastname 3").withNikname("nickname 3")
-            .withHomePhone("home 3").withMobilePhone("mobile 3").withWorkPhone("work 3").withEmail("email 3")
-            .withEmail2("email2 3").withEmail3("email3 3")});
-    return list.iterator();
+    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.xml"));
+    String xml = "";
+    String line = reader.readLine();
+    while(line !=null) {
+      xml += line;
+      line = reader.readLine();
+    }
+    XStream xstream = new XStream();
+    xstream.processAnnotations(ContactData.class);
+    List<ContactData> contacts = (List<ContactData>)xstream.fromXML(xml);
+    return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
   @Test(dataProvider = "validContacts")
@@ -36,7 +40,7 @@ public class ContactCreationTests extends TestBase {
     app.contact().homePagetContact();
     Contacts before = app.contact().all();
     app.goTo().contactPage();
-    File photo = new File("src/test/resources/1.jpg");
+    //File photo = new File("src/test/resources/1.jpg");
     app.contact().create(contact);
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size() + 1));
@@ -44,7 +48,7 @@ public class ContactCreationTests extends TestBase {
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
-  @Test
+  @Test (enabled = false)
   public void testBadContactCreation() throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.contact().all();

@@ -1,11 +1,13 @@
 package ru.stqa.alena.addressbook.tests.tests;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
-import ru.stqa.alena.addressbook.tests.model.GroupData;
+
 
 
 import java.io.*;
@@ -34,7 +36,20 @@ public class ContactCreationTests extends TestBase {
     List<ContactData> contacts = (List<ContactData>)xstream.fromXML(xml);
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
-
+  @DataProvider
+  public Iterator<Object[]> validContactsFromJson() throws IOException {
+    List<Object[]> list = new ArrayList<Object[]>();
+    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.json"));
+    String json = "";
+    String line = reader.readLine();
+    while(line !=null) {
+      json += line;
+      line = reader.readLine();
+    }
+    Gson gson = new Gson();
+    List<ContactData> contacts = gson.fromJson(json,new TypeToken<List<ContactData>>(){}.getType());
+    return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+  }
   @Test(dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) throws Exception {
     app.contact().homePagetContact();

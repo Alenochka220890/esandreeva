@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-10T19:25:44" hostname="DESKTOP-G012KTH" time="37.884">
+<testsuite name="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-04-11T17:49:34" hostname="DESKTOP-G012KTH" time="37.44">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{id=0, firstname='firstname 0', lastname='lastname 0'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="9.081"/>
-  <testcase name="testContactCreation[1](ContactData{id=0, firstname='firstname 1', lastname='lastname 1'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.076"/>
-  <testcase name="testContactCreation[2](ContactData{id=0, firstname='firstname 2', lastname='lastname 2'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.016"/>
-  <testcase name="testContactCreation[3](ContactData{id=0, firstname='firstname 3', lastname='lastname 3'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.149"/>
-  <testcase name="testContactCreation[4](ContactData{id=0, firstname='firstname 4', lastname='lastname 4'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.56"/>
+  <testcase name="testContactCreation[0](ContactData{id=0, firstname='firstname 0', lastname='lastname 0'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="8.03"/>
+  <testcase name="testContactCreation[1](ContactData{id=0, firstname='firstname 1', lastname='lastname 1'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="6.97"/>
+  <testcase name="testContactCreation[2](ContactData{id=0, firstname='firstname 2', lastname='lastname 2'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.161"/>
+  <testcase name="testContactCreation[3](ContactData{id=0, firstname='firstname 3', lastname='lastname 3'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="8.263"/>
+  <testcase name="testContactCreation[4](ContactData{id=0, firstname='firstname 4', lastname='lastname 4'})" classname="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests" time="7.014"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

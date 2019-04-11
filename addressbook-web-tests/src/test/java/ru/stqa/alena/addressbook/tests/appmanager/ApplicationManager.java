@@ -8,29 +8,40 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   public final SessionHelper sessionHelper = new SessionHelper();
   public final String browser;
+  private final Properties properties;
   public NavigationHelper navigationHelper;
   public ContactHelper contactHelper;
   public GroupHelper groupHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
+    properties = new Properties();
   }
 
-  public void init() {
-    if (browser.equals(BrowserType.FIREFOX)){
+  public void init() throws IOException {
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+    if (browser.equals(BrowserType.FIREFOX)) {
       sessionHelper.wd = new FirefoxDriver();
-    }else if (browser.equals(BrowserType.CHROME)) {
+    } else if (browser.equals(BrowserType.CHROME)) {
       sessionHelper.wd = new ChromeDriver();
-    }else if (browser.equals(BrowserType.IE))
+    } else if (browser.equals(BrowserType.IE))
       sessionHelper.wd = new InternetExplorerDriver();
 
     sessionHelper.wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    sessionHelper.login("admin", "secret");
+    sessionHelper.wd.get(properties.getProperty("web.baseUrl"));
+    sessionHelper.login(properties.getProperty("web.adminLogin"),properties.getProperty("web.adminPassword"));
     contactHelper = new ContactHelper(sessionHelper.wd);
     groupHelper = new GroupHelper(sessionHelper.wd);
     navigationHelper = new NavigationHelper(sessionHelper.wd);

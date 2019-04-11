@@ -39,7 +39,7 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE))
       sessionHelper.wd = new InternetExplorerDriver();
 
-    sessionHelper.wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    sessionHelper.wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     sessionHelper.wd.get(properties.getProperty("web.baseUrl"));
     sessionHelper.login(properties.getProperty("web.adminLogin"),properties.getProperty("web.adminPassword"));
     contactHelper = new ContactHelper(sessionHelper.wd);

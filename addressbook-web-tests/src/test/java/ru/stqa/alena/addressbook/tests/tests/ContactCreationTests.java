@@ -22,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
   @DataProvider
-  public Iterator<Object[]> validContacts() throws IOException {
+  public Iterator<Object[]> validContactsFromXml() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
     BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.xml"));
     String xml = "";
@@ -39,7 +39,7 @@ public class ContactCreationTests extends TestBase {
   @DataProvider
   public Iterator<Object[]> validContactsFromJson() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.json"));
+    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.json"));
     String json = "";
     String line = reader.readLine();
     while(line !=null) {
@@ -50,7 +50,7 @@ public class ContactCreationTests extends TestBase {
     List<ContactData> contacts = gson.fromJson(json,new TypeToken<List<ContactData>>(){}.getType());
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
-  @Test(dataProvider = "validContacts")
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.contact().all();
@@ -63,7 +63,7 @@ public class ContactCreationTests extends TestBase {
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
-  @Test (enabled = false)
+  @Test
   public void testBadContactCreation() throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.contact().all();

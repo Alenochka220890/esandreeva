@@ -6,9 +6,9 @@
     "homePhone": "1 0",
     "mobilePhone": "2 0",
     "workPhone": "3 0",
-    "email": "email@mail.ru 0",
-    "email2": "email@mail.ru 0",
-    "email3": "email@mail.ru 0"
+    "email": "email0@mail.ru",
+    "email2": "email0@mail.ru",
+    "email3": "email0@mail.ru"
   },
   {
     "firstname": "firstname 1",
@@ -17,9 +17,9 @@
     "homePhone": "1 1",
     "mobilePhone": "2 1",
     "workPhone": "3 1",
-    "email": "email@mail.ru 1",
-    "email2": "email@mail.ru 1",
-    "email3": "email@mail.ru 1"
+    "email": "email1@mail.ru",
+    "email2": "email1@mail.ru",
+    "email3": "email1@mail.ru"
   },
   {
     "firstname": "firstname 2",
@@ -28,8 +28,8 @@
     "homePhone": "1 2",
     "mobilePhone": "2 2",
     "workPhone": "3 2",
-    "email": "email@mail.ru 2",
-    "email2": "email@mail.ru 2",
-    "email3": "email@mail.ru 2"
+    "email": "email2@mail.ru",
+    "email2": "email2@mail.ru",
+    "email3": "email2@mail.ru"
   }
 ]

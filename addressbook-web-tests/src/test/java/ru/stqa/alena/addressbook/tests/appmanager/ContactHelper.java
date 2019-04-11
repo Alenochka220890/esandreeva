@@ -18,7 +18,7 @@ public class ContactHelper extends HelperBase {
   }
 
   private void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void submitContactCreation() {
@@ -91,7 +91,7 @@ public class ContactHelper extends HelperBase {
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
-    submitContact();
+    //submitContact();
     submitDeleteContactCreation();
     contactCache = null;
     homePagetContact();

@@ -1,63 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-04-11T17:50:11" hostname="DESKTOP-G012KTH" time="1.677">
+<testsuite name="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests" tests="1" skipped="1" failures="0" errors="0" timestamp="2019-04-27T13:01:41" hostname="DESKTOP-G012KTH" time="0.0">
   <properties/>
-  <testcase name="testContactDelete" classname="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests" time="1.677">
-    <failure message="java.lang.AssertionError: &#10;Expected: &lt;[ContactData{id=371, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=375, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=344, firstname='Yuriy', lastname='Andreev'}, ContactData{id=365, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=366, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=363, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=370, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=368, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=358, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=355, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=356, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=361, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=360, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=350, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=353, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=374, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=372, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=364, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=369, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=335, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=367, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=357, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=325, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=362, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=359, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=330, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=349, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=354, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=352, firstname='firstname 1', lastname='lastname 1'}]&gt;&#10;     but: was &lt;[ContactData{id=373, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=371, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=375, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=365, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=366, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=363, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=370, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=368, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=358, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=355, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=356, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=361, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=360, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=350, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=353, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=374, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=372, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=364, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=369, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=335, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=367, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=357, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=325, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=362, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=359, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=330, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=349, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=354, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=352, firstname='firstname 1', lastname='lastname 1'}]&gt;" type="java.lang.AssertionError">java.lang.AssertionError: 
-Expected: &lt;[ContactData{id=371, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=375, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=344, firstname='Yuriy', lastname='Andreev'}, ContactData{id=365, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=366, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=363, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=370, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=368, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=358, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=355, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=356, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=361, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=360, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=350, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=353, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=374, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=372, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=364, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=369, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=335, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=367, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=357, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=325, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=362, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=359, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=330, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=349, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=354, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=352, firstname='firstname 1', lastname='lastname 1'}]&gt;
-     but: was &lt;[ContactData{id=373, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=371, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=375, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=365, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=366, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=363, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=370, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=368, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=358, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=355, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=356, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=361, firstname='firstname 0', lastname='lastname 0'}, ContactData{id=360, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=350, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=353, firstname='firstname 2', lastname='lastname 2'}, ContactData{id=374, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=372, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=364, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=369, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=335, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=367, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=357, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=325, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=362, firstname='firstname 1', lastname='lastname 1'}, ContactData{id=359, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=330, firstname='firstname 4', lastname='lastname 4'}, ContactData{id=349, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=354, firstname='firstname 3', lastname='lastname 3'}, ContactData{id=352, firstname='firstname 1', lastname='lastname 1'}]&gt;
-	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)
-	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:6)
-	at ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests.testContactDelete(ContactDeleteTests.java:27)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:141)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:90)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:132)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:175)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:157)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-</failure>
+  <testcase name="testContactDelete" classname="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests" time="0.0">
+    <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

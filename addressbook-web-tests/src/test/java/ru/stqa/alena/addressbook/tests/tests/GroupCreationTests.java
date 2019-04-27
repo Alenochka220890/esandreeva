@@ -10,7 +10,9 @@ import org.testng.annotations.Test;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 import ru.stqa.alena.addressbook.tests.model.Groups;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,6 +41,7 @@ public class GroupCreationTests extends TestBase {
       return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
   }
+
   @DataProvider
   public Iterator<Object[]> validGroupsFromJson() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
@@ -58,15 +61,16 @@ public class GroupCreationTests extends TestBase {
 
   @Test(dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) throws Exception {
-      app.goTo().groupPage();
-      Groups before = app.db().groups();
-      app.group().create(group);
-      assertThat(app.group().count(), equalTo(before.size() + 1));
-      Groups after = app.db().groups();
-      assertThat(after, equalTo(
-              before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    app.goTo().groupPage();
+    Groups before = app.db().groups();
+    app.group().create(group);
+    assertThat(app.group().count(), equalTo(before.size() + 1));
+    Groups after = app.db().groups();
+    assertThat(after, equalTo(
+            before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    verifyGroupListInUI();
 
-    }
+  }
 
   @Test
   public void testBadGroupCreation() throws Exception {

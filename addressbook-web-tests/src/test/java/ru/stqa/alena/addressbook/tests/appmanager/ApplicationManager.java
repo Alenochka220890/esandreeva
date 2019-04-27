@@ -22,6 +22,7 @@ public class ApplicationManager {
   public NavigationHelper navigationHelper;
   public ContactHelper contactHelper;
   public GroupHelper groupHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -31,6 +32,8 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+    dbHelper = new DbHelper();
 
     if (browser.equals(BrowserType.FIREFOX)) {
       sessionHelper.wd = new FirefoxDriver();
@@ -45,6 +48,8 @@ public class ApplicationManager {
     contactHelper = new ContactHelper(sessionHelper.wd);
     groupHelper = new GroupHelper(sessionHelper.wd);
     navigationHelper = new NavigationHelper(sessionHelper.wd);
+
+
   }
 
   public boolean isElementPresent(By by) {
@@ -71,6 +76,10 @@ public class ApplicationManager {
 
   public SessionHelper getSessionHelper() {
     return sessionHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 
   }

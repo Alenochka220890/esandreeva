@@ -36,6 +36,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="ru.stqa.alena.addressbook.tests.model.GroupData"/>
+        <mapping class="ru.stqa.alena.addressbook.tests.model.ContactData"/>
 
     </session-factory>
 

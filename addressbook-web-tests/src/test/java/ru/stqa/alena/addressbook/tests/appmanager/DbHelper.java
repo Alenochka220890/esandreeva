@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
+import ru.stqa.alena.addressbook.tests.model.Contacts;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 import ru.stqa.alena.addressbook.tests.model.Groups;
 
@@ -21,21 +22,27 @@ public class DbHelper {
             .configure() // configures settings from hibernate.cfg.xml
             .build();
 
-      sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
   }
 
   public Groups groups() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<GroupData> result = session.createQuery( "from GroupData" ).list();
+    List<GroupData> result = session.createQuery("from GroupData").list();
     session.getTransaction().commit();
     session.close();
     return new Groups(result);
+  }
 
-
+  public Contacts contacts() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Contacts(result);
   }
 }
-
 
 
 

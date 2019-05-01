@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.netflix.servo:servo-graphite:0.7.8">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.servo/servo-graphite/0.7.8/4444f78d69f4f5ef5db46d6ff8eb0c97333aad66/servo-graphite-0.7.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.servo/servo-graphite/0.7.8/1bcce5c2d26012d9a85ae00c50305180cf56a94c/servo-graphite-0.7.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

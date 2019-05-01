@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.redhat.lightblue.client:core:1.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue.client/core/1.1.0/27ecee12f8f58faeb2774237b929c61608f0432f/core-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue.client/core/1.1.0/96fc1c3dff3229f017bfc55a519ab0fa744e016f/core-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.redhat.lightblue:metadata:1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue/metadata/1.1.1/78686d8abc719bb55897ab0b5935459512ddb95e/metadata-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue/metadata/1.1.1/a3d33fd0ce7567f5590ac9252747e485cede60bb/metadata-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

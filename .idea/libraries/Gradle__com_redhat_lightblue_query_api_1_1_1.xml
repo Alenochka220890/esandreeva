@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.redhat.lightblue:query-api:1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue/query-api/1.1.1/4523ef9641148f2a518c442049fb4590146e323c/query-api-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.redhat.lightblue/query-api/1.1.1/e370fc7d926f5ceecb438e15731cead8e4e27492/query-api-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

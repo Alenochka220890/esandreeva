@@ -44,7 +44,7 @@ public class ApplicationManager {
 
     sessionHelper.wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     sessionHelper.wd.get(properties.getProperty("web.baseUrl"));
-    sessionHelper.login(properties.getProperty("web.adminLogin"),properties.getProperty("web.adminPassword"));
+    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     contactHelper = new ContactHelper(sessionHelper.wd);
     groupHelper = new GroupHelper(sessionHelper.wd);
     navigationHelper = new NavigationHelper(sessionHelper.wd);

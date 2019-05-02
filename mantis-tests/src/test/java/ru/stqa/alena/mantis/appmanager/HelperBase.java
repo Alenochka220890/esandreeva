@@ -8,13 +8,14 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 
 public class HelperBase {
-  public WebDriver wd;
 
-  public HelperBase(WebDriver wd) {
-    this.wd = wd;
-  }
+  protected ApplicationManager app;
+  protected WebDriver wd;
 
-  public HelperBase() {
+
+  public HelperBase(ApplicationManager app) {
+    this.app = app;
+    this.wd = app.getDriver();
 
   }
 

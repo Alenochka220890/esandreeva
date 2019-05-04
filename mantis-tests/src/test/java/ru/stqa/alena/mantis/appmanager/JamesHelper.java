@@ -57,7 +57,7 @@ public class JamesHelper {
     try {
       telnet.connect(mailserver, port);
       in = telnet.getInputStream();
-      out = new PrintStream(telnet.getOutputStream());
+      out = new PrintStream(telnet.getOutputStream() );
     } catch (Exception e) {
       //TODO Auto-generated catch block
       e.printStackTrace();

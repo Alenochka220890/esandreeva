@@ -1,4 +1,5 @@
 package ru.stqa.alena.mantis.appmanager;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -8,6 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import ru.stqa.alena.mantis.model.UserData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +37,23 @@ public class HttpSession {
       return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
     }
 
-    private String geTextFrom (CloseableHttpResponse response) throws IOException {
+  public boolean login2(UserData user) throws IOException {
+    HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "login.php");
+    List <NameValuePair> params = new ArrayList<>();
+    params.add(new BasicNameValuePair("username",user.getUsername()));
+    params.add(new BasicNameValuePair("password",user.getPassword()));
+    params.add(new BasicNameValuePair("secure_session","on"));
+    params.add(new BasicNameValuePair("return","index.php"));
+    post.setEntity(new UrlEncodedFormEntity(params));
+    CloseableHttpResponse response = httpclient.execute(post);
+    String body = geTextFrom(response);
+    //System.out.println(body);
+    return body.contains(String.format("<span class=\"user-info\">%s</span>",user.getUsername()));
+    // return body.contains(String.format("//span[contains(text(),'administrator')]"));
+    // return body.contains(String.format("<span class = \"italic\">%s</span>",username)); // текст(%s)= это имя пользователя
+  }
+
+  private String geTextFrom (CloseableHttpResponse response) throws IOException {
       try {
         return EntityUtils.toString(response.getEntity());
       } finally {

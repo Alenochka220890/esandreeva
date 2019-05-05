@@ -1,5 +1,4 @@
 package ru.stqa.alena.mantis.appmanager;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -26,15 +25,20 @@ public class HelperBase {
   public void type(By locator, String text) {
     click(locator);
     if (text != null) {
-      wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (!text.equals(existingText)) {
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+      }
     }
   }
-  public void attach (By locator, File file) {
+
+  public void attach(By locator, File file) {
     if (file != null) {
       wd.findElement(locator).sendKeys(file.getAbsolutePath());
     }
   }
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
@@ -44,13 +48,25 @@ public class HelperBase {
     }
   }
 
-  public boolean isElementPresent(By locator) {
+  public boolean isElementPresent(By by) {
     try {
-      wd.findElement(locator);
+      wd.findElement(by);
       return true;
     } catch (NoSuchElementException ex) {
       return false;
     }
   }
 }
+    /*public void select (By locator, String name, By xpath){
+      new Select(wd.findElement(locator)).selectByVisibleText(name);
+      click(xpath);
+    }
+    public void selectByVisibleText (By locator, String name){
+      new Select(wd.findElement(locator)).selectByVisibleText(name);
+    }
+    public void selectByValue (By locator, String value){
+      new Select(wd.findElement(locator)).selectByValue(value);
+    }
+  }
+}*/
 

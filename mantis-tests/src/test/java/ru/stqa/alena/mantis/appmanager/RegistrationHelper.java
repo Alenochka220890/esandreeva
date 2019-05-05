@@ -2,7 +2,10 @@ package ru.stqa.alena.mantis.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.stqa.alena.mantis.model.UserData;
 
 
 public class RegistrationHelper extends HelperBase{
@@ -17,7 +20,21 @@ public class RegistrationHelper extends HelperBase{
     wd.get(app.getProperty("web.baseUrl") + "signup_page.php");
     type(By.name("username"),username);
     type(By.name("email"),email);
-    click(By.cssSelector("input[value='Зарегистрироваться']"));
+    click(By.cssSelector("input[type='submit']"));
+    //click(By.cssSelector("input[value='Зарегистрироваться']"));
+    // удалить строки ниже
+    Wait<WebDriver> wait = new WebDriverWait(wd, 35);
+    //wait.until(ExpectedConditions.visibilityOf(wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Продолжить'])[1]/preceding::div[2]"))));
+    wait.until((ExpectedConditions.visibilityOf(wd.findElement(By.xpath(".//*[normalize-space(text()) and normalize-space(.)='Продолжить']")))));
+    //click(By.xpath(".//*[normalize-space(text()) and normalize-space(.)='Продолжить']"));
+
+  }
+
+  public void selectUser(UserData user){
+    click(By.linkText(user.getUsername()));
+  }
+  public void changePassword(){
+    click(By.xpath("//input[@value='Сбросить пароль']"));
   }
 
   public void finish(String confirmationLink, String password) {

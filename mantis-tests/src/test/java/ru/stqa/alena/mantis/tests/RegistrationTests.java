@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
-public class RegistrationTests extends TestBase {
+/*public class RegistrationTests extends TestBase {
 
   //@BeforeMethod
   public void startMailServer() {
@@ -44,4 +44,4 @@ public class RegistrationTests extends TestBase {
   public void stopMailServer() {
     app.mail().stop();
   }
-}
+}*/

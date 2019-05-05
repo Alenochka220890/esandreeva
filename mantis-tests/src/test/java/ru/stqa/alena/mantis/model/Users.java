@@ -6,32 +6,32 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Users extends ForwardingSet<UserData> {
-  private Set<UserData> delegate;
+public class Users extends ForwardingSet<User> {
+  private Set<User> delegate;
 
     public Users(Users users) {
-      this.delegate = new HashSet<UserData>(users.delegate);
+      this.delegate = new HashSet<User>(users.delegate);
     }
 
     public Users() {
-      this.delegate = new HashSet<UserData>();
+      this.delegate = new HashSet<User>();
     }
 
-    public Users(Collection<UserData> users) {
-      this.delegate = new HashSet<UserData>(users);
+    public Users(Collection<User> users) {
+      this.delegate = new HashSet<User>(users);
     }
 
     @Override
-    protected Set<UserData> delegate() {
+    protected Set<User> delegate() {
       return delegate;
     }
 
-    public Users withAdded(UserData user){
+    public Users withAdded(User user){
       Users users = new Users(this);
       users.add(user);
       return users;
     }
-    public Users withOut(UserData user){
+    public Users withOut(User user){
       Users users = new Users(this);
       users.remove(user);
       return users;

@@ -2,6 +2,7 @@ package ru.stqa.alena.mantis.appmanager;
 
 import org.apache.commons.net.telnet.TelnetClient;
 import ru.stqa.alena.mantis.model.MailMessage;
+import ru.stqa.alena.mantis.model.User;
 
 import javax.mail.*;
 import java.io.IOException;
@@ -26,17 +27,17 @@ public class JamesHelper {
     mailSession = Session.getDefaultInstance(System.getProperties());
   }
 
-  public boolean doesUserExist(String name) {
+  public boolean doesUserExist(String user) {
     initTelnetSession();
-    write("verify " + name);
+    write("verify " + user);
     String result = readUntil("exist");
     closeTelnetSession();
-    return result.trim().equals("User " + name + " exist");
+    return result.trim().equals("User " + user + " exist");
   }
 
-  public void createUser(String name, String passwd) {
+  public void createUser(User name, String passwd) {
     initTelnetSession();
-    write("adduser " + name + " " + passwd);
+    write(" adduser " + name + " " + passwd);
     String result = readUntil("User " + name + " added");
     closeTelnetSession();
   }
@@ -123,10 +124,10 @@ public class JamesHelper {
     store.close();
   }
 
-  private Folder openInbox(String username, String password) throws MessagingException {
-    mailserver = app.getProperty("mailserver.host");// если не нужно убрать
+  private Folder openInbox(String user, String password) throws MessagingException {
+    initTelnetSession();
     store = mailSession.getStore("pop3");
-    store.connect(mailserver, username, password);
+    store.connect(mailserver, user, password);
     Folder folder = store.getDefaultFolder().getFolder("INBOX");
     folder.open(Folder.READ_WRITE);
     return folder;
@@ -136,6 +137,21 @@ public class JamesHelper {
     long now = System.currentTimeMillis();
     while (System.currentTimeMillis() < now + timeout) {
       List<MailMessage> allMail = getAllMail(username, password);
+      if (allMail.size() > 0) {
+        return allMail;
+      }
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    throw new Error("No mail :(");
+  }
+  public List<MailMessage> waitForMail1(User user, String password , long timeout) throws MessagingException, IOException {
+    long now = System.currentTimeMillis();
+    while (System.currentTimeMillis() < now + timeout) {
+      List<MailMessage> allMail = getAllMail(user.getUsername(), password);
       if (allMail.size() > 0) {
         return allMail;
       }

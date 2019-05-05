@@ -1,7 +1,7 @@
 package ru.stqa.alena.mantis.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.alena.mantis.model.UserData;
+import ru.stqa.alena.mantis.model.User;
 import ru.stqa.alena.mantis.model.Users;
 
 import java.sql.*;
@@ -11,12 +11,12 @@ public class DbConnectionTests {
     public void testDbConnection(){
       Connection conn = null;
       try {
-        conn = DriverManager.getConnection("jdbc:mysql://localhost/mantisbt-2.21.0?user=root&password=");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost/bugtracker?user=root&password=");
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("id, username, email, password from mantis_user_table");
+        ResultSet rs = st.executeQuery("select id,username,email,password from mantis_user_table");
         Users users = new Users();
         while (rs.next()) {
-          users.add(new UserData().withId(rs.getInt("id")).withUsername(rs.getString("username"))
+          users.add(new User().withId(rs.getInt("id")).withUsername(rs.getString("username"))
                   .withEmail(rs.getString("email")).withPassword(rs.getString("password")));
         }
         rs.close();

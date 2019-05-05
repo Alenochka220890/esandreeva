@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.stqa.alena.mantis.model.UserData;
+import ru.stqa.alena.mantis.model.User;
 
 
 public class RegistrationHelper extends HelperBase{
@@ -30,7 +30,7 @@ public class RegistrationHelper extends HelperBase{
 
   }
 
-  public void selectUser(UserData user){
+  public void selectUserData(User user){
     click(By.linkText(user.getUsername()));
   }
   public void changePassword(){

@@ -1,5 +1,6 @@
 package ru.stqa.alena.mantis.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -9,24 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+@XStreamAlias("user")
 @Entity
 @Table(name = "mantis_user_table")
-@XStreamAlias("user")
-public class UserData {
+public class User {
     @XStreamOmitField
     @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
-    // @Expose
+
+    @Expose
     @Column(name = "username")
     private String username;
+    @Expose
     @Column(name = "realname")
     private String realname;
+    @Expose
     @Column(name = "email")
-    //@Type(type = "text")
-    private String email1;
+    private String email;
+    @Expose
     @Column(name = "password")
-    // @Type(type = "text")
     private String password;
+    @Expose
     @Column(columnDefinition = "SMALLINT", name = "access_level")
     private String cod;
 
@@ -37,30 +42,30 @@ public class UserData {
       return username;
     }
     public String getEmail() {
-      return email1;
+      return email;
     }
     public String getPassword() {
       return password;
     }
     public String getCod(){return  cod;}
 
-    public UserData withUsername(String username) {
+    public User withUsername(String username) {
       this.username = username;
       return this;
     }
-    public UserData withId(int id) {
+    public User withId(int id) {
       this.id = id;
       return this;
     }
-    public UserData withEmail(String email) {
-      this.email1 = email;
+    public User withEmail(String email) {
+      this.email = email;
       return this;
     }
-    public UserData withPassword(String password) {
+    public User withPassword(String password) {
       this.password = password;
       return this;
     }
-    public UserData withCod (String cod) {
+    public User withCod (String cod) {
       this.cod = cod;
       return  this;
     }
@@ -70,7 +75,7 @@ public class UserData {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
-              ", email1='" + email1 + '\'' +
+              ", email1='" + email + '\'' +
               ", password='" + password + '\'' +
               ", cod='" + cod + '\'' +
               '}';
@@ -80,7 +85,7 @@ public class UserData {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
-      UserData user = (UserData) o;
+      User user = (User) o;
       return id == user.id &&
               Objects.equals(username, user.username);
     }

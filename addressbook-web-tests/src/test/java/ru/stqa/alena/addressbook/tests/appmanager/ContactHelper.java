@@ -33,7 +33,7 @@ public class ContactHelper extends HelperBase {
     wd.findElement(locator).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNikname());
@@ -44,6 +44,16 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     //attach(By.name("photo"), contactData.getPhoto());
+    if(creation){
+      if (contactData.getGroups().size() == 1) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+        chooseDropDown(By.name("new_group"), contactData.getGroups().iterator().next().getName());
+      }
+      // если  Creation=false - проверяем отсутствие лейбла на форме
+    } else Assert.assertFalse(
+
+            isElementPresent(By.name("new_group")));
+  }
   }
 
   public void type(By locator, String text) {
@@ -140,16 +150,7 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
-  if(creation){
-    if (contactData.getGroups().size() == 1) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-      chooseDropDown(By.name("new_group"), contactData.getGroups().iterator().next().getName());
-    }
-    // если  Creation=false - проверяем отсутствие лейбла на форме
-  } else Assert.assertFalse(
 
-  isElementPresent(By.name("new_group")));
-}
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");

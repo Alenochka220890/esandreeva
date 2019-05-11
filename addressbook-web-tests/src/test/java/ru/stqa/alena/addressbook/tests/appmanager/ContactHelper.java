@@ -1,10 +1,13 @@
 package ru.stqa.alena.addressbook.tests.appmanager;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.alena.addressbook.tests.model.ContactData;
 import ru.stqa.alena.addressbook.tests.model.Contacts;
+import ru.stqa.alena.addressbook.tests.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -181,5 +184,16 @@ public class ContactHelper extends HelperBase {
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withEmail(email)
             .withEmail2(email2).withEmail3(email3);
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    wd.findElement(By.name("to_group")).click();
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
+    click(By.name("add"));
+  }
+  public void removeContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.name("remove"));
   }
 }

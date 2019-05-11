@@ -28,7 +28,8 @@ public class ContactDeleteFromGroupTests extends TestBase {
     if (app.db().contacts().size() == 0) {
       app.goTo().addContactPage();
       Groups groups = app.db().groups();
-      app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev").withEmail("yurik@mail.ru"));
+      app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev").withEmail("yurik@mail.ru").
+              inGroup(groups.iterator().next()), true);
     }
 
     // 3) находим первый контакт, у которого есть группа, добавляем его в список контактов и выходим из цикла

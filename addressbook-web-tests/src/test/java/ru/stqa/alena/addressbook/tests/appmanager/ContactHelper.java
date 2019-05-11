@@ -87,16 +87,16 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void create(ContactData contact) {
+  public void create(ContactData contact, boolean creation) {
     gotoContactPage();
-    fillContactForm(contact);
+    fillContactForm(contact, creation);
     submitContactCreation();
     contactCache = null;
   }
 
-  public void modify(ContactData contact) {
+  public void modify(ContactData contact, boolean creation) {
     initContactModificationById(contact.getId());
-    fillContactForm(contact);
+    fillContactForm(contact, creation);
     selectContactModification();
     contactCache = null;
     homePagetContact();

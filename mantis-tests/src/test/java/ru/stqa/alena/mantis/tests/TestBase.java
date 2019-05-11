@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TestBase {
 
 
-  public static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
+  public static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.IE));
 
   @BeforeSuite(alwaysRun = true)
   public void setUp() throws Exception {

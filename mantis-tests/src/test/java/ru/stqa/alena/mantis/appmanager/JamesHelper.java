@@ -35,12 +35,6 @@ public class JamesHelper {
     return result.trim().equals("User " + user + " exist");
   }
 
-  public void createUser(User name, String passwd) {
-    initTelnetSession();
-    write(" adduser " + name + " " + passwd);
-    String result = readUntil("User " + name + " added");
-    closeTelnetSession();
-  }
 
   public void deleteUser(String name) {
     initTelnetSession();
@@ -58,7 +52,7 @@ public class JamesHelper {
     try {
       telnet.connect(mailserver, port);
       in = telnet.getInputStream();
-      out = new PrintStream(telnet.getOutputStream() );
+      out = new PrintStream(telnet.getOutputStream());
     } catch (Exception e) {
       //TODO Auto-generated catch block
       e.printStackTrace();
@@ -148,7 +142,8 @@ public class JamesHelper {
     }
     throw new Error("No mail :(");
   }
-  public List<MailMessage> waitForMail1(User user, String password , long timeout) throws MessagingException, IOException {
+
+  public List<MailMessage> waitForMail1(User user, String password, long timeout) throws MessagingException, IOException {
     long now = System.currentTimeMillis();
     while (System.currentTimeMillis() < now + timeout) {
       List<MailMessage> allMail = getAllMail(user.getUsername(), password);
@@ -183,5 +178,11 @@ public class JamesHelper {
       return null;
     }
   }
-}
 
+  public void createUser(String user, String passwd) {
+    initTelnetSession();
+    write(" adduser " + user + " " + passwd);
+    String result = readUntil("User " + user + " added");
+    closeTelnetSession();
+  }
+}

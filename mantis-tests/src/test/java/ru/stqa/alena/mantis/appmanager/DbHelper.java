@@ -34,25 +34,5 @@ public class DbHelper {
     return new Users(result);
   }
 
-  public User getUserById(int id){
-    Session session = sessionFactory.openSession();
-    session.beginTransaction();
-    User user  = (User) session.createQuery(   // new ContactGeneral().withId(id)
-            "from User where id = '" + id +"'").uniqueResult();
-
-    session.getTransaction().commit();
-    session.close();
-    return user;
-  }
-  public User getAdmin(){
-    Session session = sessionFactory.openSession();
-    session.beginTransaction();
-    User user  = (User) session.createQuery(   // new ContactGeneral().withId(id)
-            "from User where access_level = '90'").uniqueResult();
-
-    session.getTransaction().commit();
-    session.close();
-    return user;
-  }
 }
 

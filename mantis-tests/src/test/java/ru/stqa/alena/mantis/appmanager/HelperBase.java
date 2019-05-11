@@ -57,16 +57,5 @@ public class HelperBase {
     }
   }
 }
-    /*public void select (By locator, String name, By xpath){
-      new Select(wd.findElement(locator)).selectByVisibleText(name);
-      click(xpath);
-    }
-    public void selectByVisibleText (By locator, String name){
-      new Select(wd.findElement(locator)).selectByVisibleText(name);
-    }
-    public void selectByValue (By locator, String value){
-      new Select(wd.findElement(locator)).selectByValue(value);
-    }
-  }
-}*/
+
 

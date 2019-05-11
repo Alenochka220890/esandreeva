@@ -1,5 +1,7 @@
 package ru.stqa.alena.mantis.tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.alena.mantis.model.MailMessage;
@@ -16,77 +18,30 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class ChangePasswordTests extends  TestBase {
 
+  @BeforeMethod
+  public void startMailServer() {
+    app.mail().start();
+  }
 
-
- /* //@BeforeMethod
-  public String ensurePreconditions() {
-    if (app.db().users().size() != 0) {
-      {
-        app.james().deleteUser(name);
-      }
-    }
-      //@Test
-      public void testChangePassword () throws IOException, MessagingException {
-        Users before = app.db().users(); // получили список пользователей
-        // User modifyUser = new User().withId(Integer.parseInt("15")).withUsername("elviramak").withEmail("elviramak@mail.ru");//выбрали пользователя
-        //User modifyUser = (before.iterator().next());
-        String modifyUser = String.format("%s", before.iterator().next());
-        // User user = new User().withId(modifyUser.getId()).withUsername(modifyUser.getUsername());
-//String modifyUser = String.format( app.db().getUserById(Integer.parseInt("15")));
-        String password = app.db().getUserById(Integer.parseInt("15")).getPassword(); //"password";
-        app.session().login(); //вошли под админом
-        app.goTo().userManagement(); // зашли в управление пользователями
-        //вытащить из базы конкретного пользователя, найти пользователя по линк.текст=имя пользователя, нажать
-        app.registration().changePassword();//нажали Сбросить пароль
-
-        //List<MailMessage> mailMessages = app.james().waitForMail(modifyUser, password, 120000);
-        //String confirmationLink = findConfirmationLink(mailMessages,modifyUser.getEmail1());
-        //app.registration().finish(confirmationLink, password);
-        assertTrue(app.newSession().login(modifyUser, password));
-      }
-    }*/
 
       @Test
-      public void changePasswordTests () throws IOException, MessagingException, IOException, MessagingException {
-        Users before = app.db().users(); // получили список пользователей
+      public void changePasswordTests () throws IOException, MessagingException {
+        Users before = app.db().users();
         User modifyUser = before.iterator().next();
         User user = new User().withId(modifyUser.getId()).withUsername(modifyUser.getUsername())
-                .withEmail(modifyUser.getEmail()).withPassword(modifyUser.getPassword()).withCod(modifyUser.getCod());//выбрали пользователя
-        //User admin = app.db().getAdmin();
-        //String user = "username";
-        String password = "password";
+                .withEmail(modifyUser.getEmail()).withPassword(modifyUser.getPassword()).withCod(modifyUser.getCod());
         long now = System.currentTimeMillis();
-        String passwordNew = String.format("password%s", now); // новый пароль;
-        app.session().login(); //вошли под админом
-        app.goTo().userManagement(); // зашли в управление пользователями
-        app.registration().selectUserData(user);
-        //вытащить из базы конкретного пользователя, найти пользователя по линк.текст=имя пользователя, нажать
-        app.registration().changePassword();//нажали Сбросить пароль
-        //app.james().createUser(String.valueOf(user),password);
-        List<MailMessage> mailMessages = app.james().waitForMail1(user, password, 60000);// шаг 2 получение ссылки и переход по ней
-        //List<MailMessage> mailMessages = app.james().waitForMail(username, password, 60000);
-        String confirmationLink = findChangingLink(mailMessages, modifyUser.getEmail());
-        app.registration().finish(confirmationLink, passwordNew); //меняем пароль на новый
-        User userById = app.db().getUserById(modifyUser.getId());
-        assertTrue(app.newSession().login2(userById)); //шаг 3 через HTTP логинится пользователь
-        Users after = app.db().users();
-        assertThat(after, equalTo(before.withOut(modifyUser).withAdded(userById)));
+        String passwordNew = String.format("password%s", now);
+        app.session().login();
         app.goTo().userManagement();
-        // verifyGroupListInUI();
-
+        app.registration().selectUserData(user);
+        app.registration().changePassword();
+        List<MailMessage> mailMessages = app.mail().waitForMail(1, 30000);
+        String confirmationLink = app.mail().findChangingLink(mailMessages, modifyUser.getEmail());
+        app.registration().finish(confirmationLink, passwordNew);
+        assertTrue(app.newSession().login(modifyUser.getUsername(), passwordNew));
       }
-      private String findConfirmationLink (List < MailMessage > mailMessages, String email){
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        return regex.getText(mailMessage.text);
-      }
-      private String findChangingLink (List < MailMessage > mailMessages, String email){
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        return regex.getText(mailMessage.text);
-      }
-
-      //@AfterMethod(alwaysRun = true)
+      @AfterMethod(alwaysRun = true)
       public void stopMailServer(){
         app.mail().stop();
       }

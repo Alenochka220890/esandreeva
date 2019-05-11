@@ -13,17 +13,17 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
     app.contact().homePagetContact();
-      app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev"));
+      app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev"),true);
     }
   }
 
   @Test
-  public void testContactModification() throws Exception {
+  public void testContactModification(boolean creation) throws Exception {
 
     Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Yuriy").withLastname("Andreev");
-    app.contact().modify(contact);
+    app.contact().modify(contact, creation);
     assertThat(app.contact().count(),equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));

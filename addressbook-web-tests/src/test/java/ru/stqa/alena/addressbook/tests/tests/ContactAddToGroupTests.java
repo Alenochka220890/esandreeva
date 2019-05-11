@@ -26,8 +26,8 @@ public class ContactAddToGroupTests extends TestBase {
         app.goTo().addContactPage();
         //File photo = new File("src/test/resources/inner.jpg");
 
-        app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev").withEmail("yurik@mail.ru"));
-
+        app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev").withEmail("yurik@mail.ru")
+                , true);
       }
     }
 
@@ -53,4 +53,4 @@ public class ContactAddToGroupTests extends TestBase {
 
     }
   }
-  
+

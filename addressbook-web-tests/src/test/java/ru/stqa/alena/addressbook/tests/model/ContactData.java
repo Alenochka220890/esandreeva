@@ -69,6 +69,8 @@ public class ContactData {
   @Transient
   @Expose
   private String allMails;
+
+  
   private Groups groups;
 
   @Override
@@ -238,6 +240,9 @@ public class ContactData {
     public int hashCode () {
       return Objects.hash(id, firstname, lastname);
     }
-
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }
 

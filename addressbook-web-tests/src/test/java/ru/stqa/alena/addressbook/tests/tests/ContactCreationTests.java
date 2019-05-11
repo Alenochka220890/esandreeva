@@ -51,12 +51,12 @@ public class ContactCreationTests extends TestBase {
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
   @Test(dataProvider = "validContactsFromJson")
-  public void testContactCreation(ContactData contact) throws Exception {
+  public void testContactCreation(ContactData contact, boolean creation) throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     //File photo = new File("src/test/resources/1.jpg");
-    app.contact().create(contact);
+    app.contact().create(contact, creation);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
@@ -64,12 +64,12 @@ public class ContactCreationTests extends TestBase {
   }
 
   @Test
-  public void testBadContactCreation() throws Exception {
+  public void testBadContactCreation(boolean creation) throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     ContactData contact = new ContactData().withFirstname("Yuriy'").withLastname("Andreev'");
-    app.contact().create(contact);
+    app.contact().create(contact, creation);
     assertThat(app.contact().count(),equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));

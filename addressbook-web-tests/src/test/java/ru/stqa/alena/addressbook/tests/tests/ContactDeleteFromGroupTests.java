@@ -7,10 +7,8 @@ import ru.stqa.alena.addressbook.tests.model.Contacts;
 import ru.stqa.alena.addressbook.tests.model.GroupData;
 import ru.stqa.alena.addressbook.tests.model.Groups;
 
-import static javax.management.Query.not;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
-
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 
 public class ContactDeleteFromGroupTests extends TestBase {

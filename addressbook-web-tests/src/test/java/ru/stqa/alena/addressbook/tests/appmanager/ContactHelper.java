@@ -47,14 +47,13 @@ public class ContactHelper extends HelperBase {
     if(creation){
       if (contactData.getGroups().size() == 1) {
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-        chooseDropDown(By.name("new_group"), contactData.getGroups().iterator().next().getName());
       }
       // если  Creation=false - проверяем отсутствие лейбла на форме
     } else Assert.assertFalse(
 
             isElementPresent(By.name("new_group")));
   }
-  }
+
 
   public void type(By locator, String text) {
     click(locator);

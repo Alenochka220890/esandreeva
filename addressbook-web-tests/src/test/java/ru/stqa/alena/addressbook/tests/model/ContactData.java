@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -68,6 +69,7 @@ public class ContactData {
   @Transient
   @Expose
   private String allMails;
+  private Groups groups;
 
   @Override
   public String toString() {
@@ -182,7 +184,12 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withFirstname(String firstname) {
+  public Set<GroupData> getGroups() {
+    return new Groups(groups);
+  }
+
+
+    public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }

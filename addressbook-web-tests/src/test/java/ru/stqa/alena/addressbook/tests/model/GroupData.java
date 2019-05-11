@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
+import java.util.Set;
+
 @XStreamAlias("group")
 @Entity
 @Table(name = "group_list")
@@ -18,6 +20,7 @@ public class GroupData {
   @Id
   @Column(name = "group_id")
   private int id = Integer.MAX_VALUE;
+  private Contacts contacts;
 
   @Override
   public boolean equals(Object o) {
@@ -66,6 +69,9 @@ public class GroupData {
   public GroupData withId(int id) {
     this.id = id;
     return this;
+  }
+  public Set<ContactData> getContacts() {
+    return new Contacts(contacts);
   }
 
   public GroupData withName(String name) {

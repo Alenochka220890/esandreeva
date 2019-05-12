@@ -3,7 +3,6 @@ package ru.stqa.alena.mantis.appmanager;
 import biz.futureware.mantis.rpc.soap.client.*;
 import ru.stqa.alena.mantis.model.Issue;
 import ru.stqa.alena.mantis.model.Project;
-
 import javax.xml.rpc.ServiceException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
@@ -19,15 +18,18 @@ public class SoapHelper {
   public SoapHelper(ApplicationManager app) {
     this.app = app;
   }
-
+  public String getStatus(int id) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    return mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(id)).getStatus().getName();
+  }
   public Set<Project> getProjects() throws RemoteException, MalformedURLException, ServiceException {
     MantisConnectPortType mc = getMantisConnect();
-    ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
+    ProjectData[] projects = mc.mc_projects_get_user_accessible(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));
     return Arrays.asList(projects).stream().map((p)-> new Project().withId(p.getId()
             .intValue()).withName(p.getName())).collect(Collectors.toSet());
   }
 
-  private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+    private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator()
               .getMantisConnectPort(new URL("http://localhost/mantisbt-2.21.0/api/soap/mantisconnect.php"));
   }

@@ -99,7 +99,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact, boolean creation) {
-    initContactModificationById(contact.getId());
+    chooseContactById(contact.getId());
     fillContactForm(contact, creation);
     selectContactModification();
     contactCache = null;

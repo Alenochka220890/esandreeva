@@ -51,12 +51,13 @@ public class ContactCreationTests extends TestBase {
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
   @Test(dataProvider = "validContactsFromJson")
-  public void testContactCreation(ContactData contact, boolean creation) throws Exception {
+  public void testContactCreation(ContactData contact) throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     //File photo = new File("src/test/resources/1.jpg");
-    app.contact().create(contact, creation);
+    app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev")
+            , true);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(

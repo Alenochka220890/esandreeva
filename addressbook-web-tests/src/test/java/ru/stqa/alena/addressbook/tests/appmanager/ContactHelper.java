@@ -75,10 +75,12 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//img[@alt='Edit'])"));
   }
 
+  //public void submitDeleteContactCreation() {
+    //click(By.xpath("(//input[@name='update'])[3]"));
+  //}
   public void submitDeleteContactCreation() {
-    click(By.xpath("(//input[@name='update'])[3]"));
+    click(By.xpath("//input[@value='Delete']"));
   }
-
   public void homePagetContact() {
     click(By.linkText("home"));
   }
@@ -107,12 +109,16 @@ public class ContactHelper extends HelperBase {
   }
 
   public void delete(ContactData contact) {
-    selectContactById(contact.getId());
+    chooseContactById(contact.getId());
     submitDeleteContactCreation();
+    acceptAlert();
     contactCache = null;
     homePagetContact();
   }
 
+  public void acceptAlert() {
+    wd.switchTo().alert().accept();
+  }
 
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("(//img[@alt='Edit'])"));

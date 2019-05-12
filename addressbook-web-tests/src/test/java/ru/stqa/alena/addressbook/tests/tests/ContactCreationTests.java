@@ -56,8 +56,7 @@ public class ContactCreationTests extends TestBase {
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     //File photo = new File("src/test/resources/1.jpg");
-    app.contact().create(new ContactData().withFirstname("Yuriy").withLastname("Andreev")
-            , true);
+    app.contact().create(contact, true);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
@@ -65,12 +64,12 @@ public class ContactCreationTests extends TestBase {
   }
 
   @Test
-  public void testBadContactCreation(boolean creation) throws Exception {
+  public void testBadContactCreation() throws Exception {
     app.contact().homePagetContact();
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     ContactData contact = new ContactData().withFirstname("Yuriy'").withLastname("Andreev'");
-    app.contact().create(contact, creation);
+    app.contact().create(contact, true);
     assertThat(app.contact().count(),equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));

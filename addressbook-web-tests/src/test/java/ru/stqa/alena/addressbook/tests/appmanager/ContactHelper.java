@@ -21,8 +21,8 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  private void selectContactById(int id) {
-    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "']")).click();
   }
 
   public void chooseContactById(int id) {
@@ -99,7 +99,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact, boolean creation) {
-    chooseContactById(contact.getId());
+    selectContactById(contact.getId());
     fillContactForm(contact, creation);
     selectContactModification();
     contactCache = null;

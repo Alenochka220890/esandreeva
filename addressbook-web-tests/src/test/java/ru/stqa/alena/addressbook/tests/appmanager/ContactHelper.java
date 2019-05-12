@@ -25,7 +25,11 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
-  public void submitContactCreation() {
+  public void chooseContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+    public void submitContactCreation() {
     click(By.xpath("//input[21]"));
   }
 
@@ -196,13 +200,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void addToGroup(ContactData contact, GroupData group) {
-    selectContactById(contact.getId());
+    chooseContactById(contact.getId());
     wd.findElement(By.name("to_group")).click();
     new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
     click(By.name("add"));
   }
   public void removeContactFromGroup(ContactData contact) {
-    selectContactById(contact.getId());
+    chooseContactById(contact.getId());
     click(By.name("remove"));
   }
 }

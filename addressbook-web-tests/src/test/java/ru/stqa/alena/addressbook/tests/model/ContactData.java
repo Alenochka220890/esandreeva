@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -70,8 +71,7 @@ public class ContactData {
   @Expose
   private String allMails;
 
-  
-  private Groups groups;
+
 
   @Override
   public String toString() {
@@ -96,6 +96,9 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
+
+
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public String getEmail2() {
     return email2;

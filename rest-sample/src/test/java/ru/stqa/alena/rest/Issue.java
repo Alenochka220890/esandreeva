@@ -24,6 +24,7 @@ public class Issue {
   public Issue withSubject(String subject) {
     this.subject = subject;
     return this;
+
   }
 
   public String getDescription() {

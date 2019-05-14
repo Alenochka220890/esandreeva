@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PointTests_2 {
-
   @Test
   public void testDistance() {
     Point p1 = new Point(3, 4);

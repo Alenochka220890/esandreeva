@@ -8,6 +8,6 @@ public class PointTests_1 {
     public void testDistance (){
     Point p1 = new Point(3, 4);
     Point p2 = new Point(5, 6);
-    Assert.assertEquals(p1.distance(p2), 1.8284271247461903);
+    Assert.assertEquals(p1.distance(p2), 2.8284271247461903);
   }
 }

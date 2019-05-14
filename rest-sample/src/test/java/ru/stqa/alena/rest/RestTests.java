@@ -8,7 +8,6 @@ import com.google.gson.Gson;
         import org.apache.http.client.fluent.Request;
         import org.apache.http.message.BasicNameValuePair;
         import org.testng.annotations.Test;
-        import ru.stqa.alena.rest.Issue;
         import java.io.IOException;
         import java.util.Set;
 
@@ -16,10 +15,6 @@ import com.google.gson.Gson;
 
 public class RestTests {
 
-
-  /**
-   * Тест проверяет создание багрепорта по протоколу REST
-   */
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues = getIssues();
@@ -32,11 +27,6 @@ public class RestTests {
 
   }
 
-  /**
-   * Метод получает список багрепортов в формате json с помощью GET запроса
-   *
-   * @return множестсво объектов типа Issue
-   */
   private Set<Issue> getIssues() throws IOException {
     String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues.json?limit=500"))
             .returnContent().asString();
@@ -45,19 +35,12 @@ public class RestTests {
     return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
   }
 
-  /**
-   * Технический метод для авторизации на сервере
-   */
   private Executor getExecutor() {
     return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");
   }
 
-  /**
-   * Метод создаёт новый багрепорт с помощью POST запроса
-   * @return id созданного багрепорт
-   */
   private int createIssue(Issue newIssue) throws IOException {
-    String json = getExecutor().execute(Request.Post("http://bugify.stqa.ru/api/issues.json")
+    String json = getExecutor().execute(Request.Post("http://bugify.stqa.ru/api/issues.json?limit=500")
             .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject()),
                     new BasicNameValuePair("description", newIssue.getDescription()))).returnContent().asString();
 
@@ -66,5 +49,4 @@ public class RestTests {
     return parsed.getAsJsonObject().get("issue_id").getAsInt();
 
   }
-
 }

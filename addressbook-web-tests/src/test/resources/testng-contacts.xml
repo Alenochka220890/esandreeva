@@ -2,9 +2,14 @@
 <suite name="Suite1" verbose="1" >
 <test name="Contacts">
     <classes>
+        <class name="ru.stqa.alena.addressbook.tests.tests.ContactAddToGroupTests"/>
         <class name="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests"/>
+        <class name="ru.stqa.alena.addressbook.tests.tests.ContactDeleteFromGroupTests"/>
         <class name="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests"/>
+        <class name="ru.stqa.alena.addressbook.tests.tests.ContactMailTests"/>
         <class name="ru.stqa.alena.addressbook.tests.tests.ContactModificationTests"/>
+        <class name="ru.stqa.alena.addressbook.tests.tests.ContactPhoneTests"/>
+        <class name="ru.stqa.alena.addressbook.tests.tests.DbConnectionTest"/>
     </classes>
 </test>
         </suite>

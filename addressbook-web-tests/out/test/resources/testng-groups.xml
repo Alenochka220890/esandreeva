@@ -3,17 +3,9 @@
 <suite name="Suite1" verbose="1" >
     <test name="Groups" >
         <classes>
-            <class name="ru.stqa.alena.addressbook.tests.tests.GroupCreationTests" />
-            <class name="ru.stqa.alena.addressbook.tests.tests.GroupDeleteTests" />
             <class name="ru.stqa.alena.addressbook.tests.tests.GroupModificationTests" />
-        </classes>
-    </test>
-
-    <test name="Contacts">
-        <classes>
-            <class name="ru.stqa.alena.addressbook.tests.tests.ContactCreationTests"/>
-            <class name="ru.stqa.alena.addressbook.tests.tests.ContactDeleteTests"/>
-            <class name="ru.stqa.alena.addressbook.tests.tests.ContactModificationTests"/>
+            <class name="ru.stqa.alena.addressbook.tests.tests.GroupDeleteTests" />
+            <class name="ru.stqa.alena.addressbook.tests.tests.GroupCreationTests" />
         </classes>
     </test>
 </suite>

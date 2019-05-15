@@ -113,13 +113,18 @@ public class ContactHelper extends HelperBase {
     submitDeleteContactCreation();
     acceptAlert();
     contactCache = null;
-    returnToHomePage();
+    returnToHomePage1();
+
   }
 
   public void returnToHomePage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
+    click(By.linkText("home"));
+  }
+
+  public void returnToHomePage1() {
     click(By.linkText("home"));
   }
 

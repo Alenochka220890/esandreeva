@@ -113,7 +113,7 @@ public class ContactHelper extends HelperBase {
     submitDeleteContactCreation();
     acceptAlert();
     contactCache = null;
-    returnToHomePage1();
+    returnToHomePage();
 
   }
 

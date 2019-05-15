@@ -6,6 +6,7 @@
             <class name="ru.stqa.alena.addressbook.tests.tests.GroupModificationTests" />
             <class name="ru.stqa.alena.addressbook.tests.tests.GroupDeleteTests" />
             <class name="ru.stqa.alena.addressbook.tests.tests.GroupCreationTests" />
+            <class name="ru.stqa.alena.addressbook.tests.tests.HbConnectionTest" />
         </classes>
     </test>
 </suite>
